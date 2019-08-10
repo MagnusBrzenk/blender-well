@@ -1,8 +1,8 @@
 {
-  "name": "threejs-boilerplate",
+  "name": "blender-monster-confrontation",
   "author": "Magnus Brzenk",
   "version": "0.0.0",
-  "description": "ThreeJs Boilerplate using typescript and webpack",
+  "description": "Forked from my ThreeJs Boilerplate to display simple FBX scene",
   "private": true,
   "license": "MIT",
   "cacheDirectories": [
