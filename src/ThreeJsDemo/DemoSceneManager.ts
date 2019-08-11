@@ -13,14 +13,15 @@ export class DemoSceneManager extends SceneManagerBase implements ISceneManager 
     // Style canvas
     container.style.backgroundColor = 'rgba(0,0,0,1)';
 
-    this._camera.position.set(1970, 1970, 1970);
+    this._camera.position.set(6, 6, 6);
+    // this._camera.position.set(-8, 12, 15);
 
     // Create entities
     this._sceneEntities = [
       //
-      // new DirectionalLight(this),
+      new DirectionalLight(this, true),
       // new MiscHelpers(this),
-      // new SimpleLight(this),
+      new SimpleLight(this),
       // new Square(this, 1),
       new Shapes(this, 1)
     ];
@@ -29,10 +30,22 @@ export class DemoSceneManager extends SceneManagerBase implements ISceneManager 
     this._sceneEntities.forEach(el => el.init());
 
     this._updateCamera = this.updateCamera;
+    const v = this._camera.position.clone();
+    // this._camera.position.set(-8, 12, 15);
+    // setTimeout(() => {
+    //   console.log('????');
+    //   this._camera.position.set(-8, 12, 17);
+    // }, 2000);
   }
 
   updateCamera = (time: number) => {
     //
     // console.log(this._camera.position.toArray());
+    // const t = time * 0.1;
+    // const x = 6 * Math.cos(Math.PI * t);
+    // const y = 6 * Math.sin(Math.PI * t);
+    // const z = 6;
+    // this._camera.position.set(x, y, z);
+    // this._camera.lookAt(0, 0, 0);
   };
 }

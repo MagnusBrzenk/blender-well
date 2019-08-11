@@ -52,7 +52,7 @@ const webpackConfig: Configuration = {
       disableDotRule: true
     },
     watchOptions: {
-      poll: false
+      poll: !false
     },
     inline: true
   },

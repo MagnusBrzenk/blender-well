@@ -42,7 +42,7 @@ export class SceneManagerBase {
     const aspectRatio: number = this._canvas.width / this._canvas.height;
     const fieldOfView: number = 60;
     const nearPlane: number = 0.1; // Wow! Beware: changing this causes/fixes flickering/artifact-ing !!!
-    const farPlane: number = 13500;
+    const farPlane: number = 135000;
     this._camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
     this._camera.position.copy(this._initialViewingVector);
     this._camera.up = new THREE.Vector3(0, 0, 1); // Vector defining up direction of camera

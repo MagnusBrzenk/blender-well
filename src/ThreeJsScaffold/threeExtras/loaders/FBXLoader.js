@@ -531,6 +531,8 @@ var FBXLoader = (function () {
 
       }
 
+      console.log("TYPE", type);
+
       // Ignore unused materials which don't have any connections.
       if (!connections.has(ID)) return null;
 
@@ -1308,6 +1310,9 @@ var FBXLoader = (function () {
 
       }
 
+      model.receiveShadow = true;
+      model.castShadow = true;
+console.log("MODEL");
       return model;
 
     },
