@@ -1,6 +1,8 @@
 import { DemoSceneManager } from './threeJsDemo/DemoSceneManager';
 import './global.scss';
 
+let demo: DemoSceneManager;
+
 initThreeJs();
 if (process.env.NODE_ENV === 'development') displayFpsStats();
 
@@ -11,7 +13,7 @@ function initThreeJs() {
   const containerId = 'canvas-container';
   const canvasContainer = document.getElementById('canvas-container');
   if (!!canvasContainer) {
-    const demo = new DemoSceneManager(canvasContainer);
+    demo = new DemoSceneManager(canvasContainer);
   } else {
     throw new Error('No container with id ' + containerId + ' found!!!');
   }
@@ -34,3 +36,8 @@ function displayFpsStats() {
   script.src = '//mrdoob.github.io/stats.js/build/stats.min.js';
   document.head.appendChild(script);
 }
+
+const div = document.getElementById('light-toggle');
+div!.onclick = () => {
+  demo.toggleLight();
+};

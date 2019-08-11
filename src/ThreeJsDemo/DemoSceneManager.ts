@@ -7,6 +7,8 @@ import { Shapes } from './ThreeJsSceneEntities/shapes';
 import { SimpleLight } from './ThreeJsSceneEntities/SimpleLight';
 
 export class DemoSceneManager extends SceneManagerBase implements ISceneManager {
+  private _simpleLight: SimpleLight;
+
   constructor(container: HTMLElement) {
     super(container);
 
@@ -16,12 +18,14 @@ export class DemoSceneManager extends SceneManagerBase implements ISceneManager 
     this._camera.position.set(6, 6, 6);
     // this._camera.position.set(-8, 12, 15);
 
+    this._simpleLight = new SimpleLight(this);
+
     // Create entities
     this._sceneEntities = [
       //
-      new DirectionalLight(this, true),
+      // new DirectionalLight(this, true),
       // new MiscHelpers(this),
-      new SimpleLight(this),
+      this._simpleLight,
       // new Square(this, 1),
       new Shapes(this, 1)
     ];
@@ -47,5 +51,9 @@ export class DemoSceneManager extends SceneManagerBase implements ISceneManager 
     // const z = 6;
     // this._camera.position.set(x, y, z);
     // this._camera.lookAt(0, 0, 0);
+  };
+
+  toggleLight = () => {
+    this._simpleLight.toggleLight();
   };
 }

@@ -9,14 +9,20 @@ export class SimpleLight extends SceneEntityBase implements ISceneEntity {
 
   init = () => {
     // Add ambient light
-    this._sceneEntityGroup.add(new THREE.AmbientLight(0x333333, 1));
+    this._sceneEntityGroup.add(new THREE.AmbientLight(0x333333, 10));
 
     // Finish
     this._isSceneEntityReady = true;
     this._parentSceneManager.attemptStart();
+
+    this.toggleLight();
   };
 
   update = (time: number) => {
     // Move light around, etc.
+  };
+
+  toggleLight = () => {
+    this._sceneEntityGroup.traverse(child => (child.visible = !child.visible));
   };
 }
