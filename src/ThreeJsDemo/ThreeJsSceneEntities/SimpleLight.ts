@@ -3,19 +3,19 @@ import { ISceneEntity, SceneEntityBase } from '../../ThreeJsScaffold/scene.entit
 import { ISceneManager } from '../../ThreeJsScaffold/scene.manager';
 
 export class SimpleLight extends SceneEntityBase implements ISceneEntity {
-  constructor(parentSceneManager: ISceneManager) {
+  constructor(parentSceneManager: ISceneManager, private _strength: number = 1) {
     super(parentSceneManager);
   }
 
   init = () => {
     // Add ambient light
-    this._sceneEntityGroup.add(new THREE.AmbientLight(0x333333, 10));
+    this._sceneEntityGroup.add(new THREE.AmbientLight(0x333333, this._strength));
 
     // Finish
     this._isSceneEntityReady = true;
     this._parentSceneManager.attemptStart();
 
-    this.toggleLight();
+    // this.toggleLight();
   };
 
   update = (time: number) => {
@@ -23,6 +23,7 @@ export class SimpleLight extends SceneEntityBase implements ISceneEntity {
   };
 
   toggleLight = () => {
+    console.log('', this._strength);
     this._sceneEntityGroup.traverse(child => (child.visible = !child.visible));
   };
 }

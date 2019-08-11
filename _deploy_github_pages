@@ -2,6 +2,8 @@
 
 clear
 
+rm -rf dist
+
 if [[ ! -d dist ]]; then
   ./_build_js_bundle
 fi

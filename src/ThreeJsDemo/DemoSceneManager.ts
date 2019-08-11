@@ -18,7 +18,8 @@ export class DemoSceneManager extends SceneManagerBase implements ISceneManager 
     this._camera.position.set(6, 6, 6);
     // this._camera.position.set(-8, 12, 15);
 
-    this._simpleLight = new SimpleLight(this);
+    this._simpleLight = new SimpleLight(this, 10);
+    // this._simpleLight.toggleLight();
 
     // Create entities
     this._sceneEntities = [
@@ -26,12 +27,15 @@ export class DemoSceneManager extends SceneManagerBase implements ISceneManager 
       // new DirectionalLight(this, true),
       // new MiscHelpers(this),
       this._simpleLight,
+      new SimpleLight(this, 0.3),
       // new Square(this, 1),
       new Shapes(this, 1)
     ];
 
     // Set this as entities parent
     this._sceneEntities.forEach(el => el.init());
+
+    this._simpleLight.toggleLight();
 
     this._updateCamera = this.updateCamera;
     const v = this._camera.position.clone();
